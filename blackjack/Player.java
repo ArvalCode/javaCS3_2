@@ -5,12 +5,11 @@ public class Player {
     private int winCount;
 
     public Player() {
-        // Initialize hand & set win count to 0
         hand = new ArrayList<Card>();
         winCount = 0;
     }
 
-    public Player(int score) { //Sets initial score when making player class
+    public Player(int score) {
         winCount = score;
         hand = new ArrayList<Card>();
     }
@@ -44,15 +43,18 @@ public class Player {
     }
 
     public boolean hit() {
-        // Implement the logic for deciding whether the player wants to "hit" in the game
-        // For example, based on the total value of cards in hand
-        // Return true if the player chooses to hit, false otherwise
-        // You'll need to define the logic based on the rules of your card game
+        if (getHandValue() < 21) {
+            return true;
+        }
         return false;
     }
 
     @Override
     public String toString() {
         return "Hand: " + hand + "\n-" + getHandValue();
+    }
+
+    public void incrementWinCount() {
+        winCount++;
     } 
 }

@@ -10,23 +10,18 @@ public class Deck {
     private ArrayList<Card> stackOfCards;
 
     public Deck() {
-        // initialize data - stackOfCards - topCardIndex
-        stackOfCards = new ArrayList<Card>(); // Initialize the ArrayList
-        topCardIndex = NUMCARDS - 1; // Set topCardIndex to the last index of the deck
+        stackOfCards = new ArrayList<Card>(); 
+        topCardIndex = NUMCARDS - 1; 
 
-        // loop through suits
-        // loop through faces
-        // add in a new card
         for (int i = 0; i < NUMSUITS; i++) {
             for (int j = 0; j < NUMFACES; j++) {
-                stackOfCards.add(new Card(j + 1, SUITS[i])); // Create a new Card and add it to the deck
+                stackOfCards.add(new Card(j+1, SUITS[i]));
             }
         }
     }
 
     // modifiers
     public void shuffle() {
-        // shuffle deck
         Collections.shuffle(stackOfCards);
         // reset variables as needed
         topCardIndex = NUMCARDS - 1;
@@ -48,6 +43,15 @@ public class Deck {
             return null; //if deck is empty
         }
     }
+
+    public void removeCard() {
+        if (topCardIndex >= 0) {
+            stackOfCards.remove(topCardIndex--);
+        } else {
+            System.out.println("No cards left in the deck.");
+        }
+    }
+    
 
     public String toString() {
         return stackOfCards + " topCardIndex = " + topCardIndex;
