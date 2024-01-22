@@ -87,7 +87,7 @@ public class BlackJack {
         }
     }
 
-    private void determineWinners() {
+    private void determineWinners() { //Implements logic to determine winner for player
         int dealerHandValue = dealer.getHandValue();
 
         for (int i = 0; i < players.length; i++) {
