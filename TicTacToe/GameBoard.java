@@ -15,7 +15,7 @@ public class GameBoard extends Canvas implements MouseListener
 	private boolean mouseClicked, gameOver;
 	private int mouseButton, prevMouseButton;
 	private Grid board;
-	//count how many times it was clicked to see if it was filled in completely
+//checks if click & makes sure its complete
 	private int clicks;
 	private final static int WIDTH=150;
 	private final static int HEIGHT=150;
@@ -46,7 +46,7 @@ public class GameBoard extends Canvas implements MouseListener
 
 	public void paint(Graphics window)
 	{
-		//count how many times it was clicked to see if it was filled in completely
+//checks if click & makes sure its complete
 		
 		window.setColor(Color.white);
 		window.fillRect(0,0,640,480);
@@ -66,9 +66,9 @@ public class GameBoard extends Canvas implements MouseListener
 
 			if(determineWinner(window))
 			{
-			  //make a new board	
+			  //creates a board	
 				board = new Grid(BOARDSIZE,BOARDSIZE);
-			  //clear the screen
+			  //clear screen
 				//reset clicks
 				clicks = 0;
 			}	
@@ -83,17 +83,17 @@ public class GameBoard extends Canvas implements MouseListener
 			int r = mouseY/50-1;
 			int c = mouseX/50-1;
 			Piece piece = (Piece)board.getSpot(r,c);
-			//if BUTTON1 was pressed and BUTTON1 was not pressed last mouse press
+			//if BUTTON1 was pressed and BUTTON1 was not pressed last mouse press t/f
 			if(mouseButton==MouseEvent.BUTTON1&&prevMouseButton!=mouseButton)		//left mouse button pressed
 			{
 				if(piece == null)
 				{
 					System.out.println("bingus");
 					board.setSpot(r,c,new Piece(5+c*50+50,5+r*50+50,WIDTH/3-10,HEIGHT/3-10,"X",Color.GREEN));
-					//add to clicks
+					//add to the clicks
 					clicks++;
 				}
-				//save the current button pressed to compare to next button pressed
+				//save current to compare to next pressed
 				prevMouseButton=mouseButton;
 			}
 			//if BUTTON3 was pressed and BUTTON3 was not pressed last mouse press
@@ -106,10 +106,10 @@ public class GameBoard extends Canvas implements MouseListener
 					//add to clicks
 					clicks++;
 				}
-				//save the current button pressed to compare to next button pressed
+				//save current to compare to next pressed
 				prevMouseButton=mouseButton;
 			}
-				//save the current button pressed to compare to next button pressed
+				//save current to compare to next pressed
 				prevMouseButton=mouseButton;				
 		}
 	}
@@ -156,7 +156,7 @@ public class GameBoard extends Canvas implements MouseListener
 			
 			if(row0==null||row1==null||row2==null) 
 			{
-				//if a piece is null do nothing else check to see if their equal
+				//if a piece is null, do nothing else
 			}
 			else
 			{
@@ -176,7 +176,7 @@ public class GameBoard extends Canvas implements MouseListener
 			
 			if(row0==null||row1==null||row2==null) 
 			{
-				//if a piece is null do nothing else check to see if their equal
+				//if a piece is null do nothing
 			}
 			else
 			{
@@ -192,7 +192,7 @@ public class GameBoard extends Canvas implements MouseListener
 		   board.drawGrid(window);
 		   return false;
 		}
-		//if board is filled and no winner, then print no winner
+// no winner condition
 		else if(board.drawGrid(window)&&winner.length()==0 && clicks == 9)
 		{
 		   winner =  "cat's game - no winner!\n\n";
